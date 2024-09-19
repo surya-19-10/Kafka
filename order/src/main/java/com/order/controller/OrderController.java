@@ -14,7 +14,7 @@ public class OrderController {
     @Autowired private OrderService orderService;
     @PostMapping("/save/order")
     public ResponseEntity<?> saveOrder(@RequestBody Order order) {
-
-        return new ResponseEntity<>("Order placed Successfully", HttpStatus.CREATED);
+        String orderID = orderService.saveOrder(order);
+        return new ResponseEntity<>(orderID, HttpStatus.CREATED);
     }
 }
